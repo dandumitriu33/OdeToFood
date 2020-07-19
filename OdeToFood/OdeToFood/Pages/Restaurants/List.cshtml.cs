@@ -23,10 +23,13 @@ namespace OdeToFood.Pages.Restaurants
             this.config = config;
             this.restaurantData = restaurantData;
         }
-        public void OnGet()
+        public void OnGet(string searchTerm)
         {
+            // HttpContext.Request.QueryString // one way of getting the searchTerm
+            // with strings searchTerm from parameters is optional, it won't throw exception
+            // if it's an int it will throw an exception
             Message = config["Message"];
-            Restaurants = restaurantData.GetAll();
+            Restaurants = restaurantData.GetRestaurantsByName(searchTerm);
         }
     }
 }
