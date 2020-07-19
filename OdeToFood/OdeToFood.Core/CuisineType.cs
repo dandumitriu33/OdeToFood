@@ -1,6 +1,6 @@
 ﻿namespace OdeToFood.Core
 {
-    public enum CuisineTye
+    public enum CuisineType
     {
         None,
         Mexican,
