@@ -13,6 +13,8 @@ namespace OdeToFood.Pages.Restaurants
     public class ListModel : PageModel
     {
         public string Message { get; set; }
+        [BindProperty(SupportsGet =true)]
+        public string SearchTerm { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurantData;
@@ -23,13 +25,14 @@ namespace OdeToFood.Pages.Restaurants
             this.config = config;
             this.restaurantData = restaurantData;
         }
-        public void OnGet(string searchTerm)
+        public void OnGet()
         {
+            // SearchTerm = searchTerm; // can work
             // HttpContext.Request.QueryString // one way of getting the searchTerm
             // with strings searchTerm from parameters is optional, it won't throw exception
             // if it's an int it will throw an exception
             Message = config["Message"];
-            Restaurants = restaurantData.GetRestaurantsByName(searchTerm);
+            Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }
 }
