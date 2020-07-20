@@ -27,6 +27,7 @@
             $.ajax("/api/restaurants/",
                 { method: "get" })
                 .then(function (response) {
+                    var cuisines = ["Unknown", "Mexican", "Italian", "Indian"]
                     for (var i = 0; i < response.length; i++) {
                         var tb = document.getElementById("rBody");
                         console.log(tb);
@@ -34,7 +35,7 @@
                         row.innerHTML = `<tr>
                                         <td>${response[i].name}</td>
                                         <td>${response[i].location}</td>
-                                        <td>${response[i].cuisine}</td>
+                                        <td>${cuisines[response[i].cuisine]}</td>
                                      </tr>`
                         tb.appendChild(row);
                     }
