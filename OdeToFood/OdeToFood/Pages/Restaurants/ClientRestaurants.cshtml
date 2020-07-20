@@ -6,14 +6,20 @@
 
 <h1>ClientRestaurants</h1>
 
+<table class="table" id="restaurants">
+
+</table>
+
 @section Scripts {
+    
     <script>
         $(function () {
-            $.ajax("/api/restaurants/", { method: "get" })
+            $.ajax("/api/restaurants/",
+                { method: "get" })
                 .then(function (response) {
                     console.dir(response);
-                })
-        })
+                });
+        });
 
 
     </script>
