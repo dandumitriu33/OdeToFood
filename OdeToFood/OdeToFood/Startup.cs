@@ -15,6 +15,7 @@ namespace OdeToFood
 {
     public class Startup
     {
+        // project at: https://github.com/odetocode/odetofood
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,6 +34,7 @@ namespace OdeToFood
             //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();            
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
             services.AddRazorPages();
+            services.AddControllers();
 
         }
 
@@ -60,6 +62,7 @@ namespace OdeToFood
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
